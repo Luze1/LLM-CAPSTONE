@@ -1,20 +1,18 @@
 import json
 from pathlib import Path
 
-from retrieval import load_stations, score, tokenize
+from retrieval import load_menu, score, tokenize
 
 ROOT = Path(__file__).parent
 
 
 def retrieve(question: str, expand: bool) -> str:
-    stations = load_stations()
-    def rank(station: dict) -> int:
+    menu = load_menu()
+    def rank(item: dict) -> int:
         if not expand:
-            return len(tokenize(question) & tokenize(f"{station['name']} {station['area']}"))
-        return score(question, station, expand=True)
-
-    ranked = sorted(stations, key=lambda station: (-rank(station), station["id"]))
-    return ranked[0]["id"]
+            return len(tokenize(question) & tokenize(f"{item['name']} {item['category']}"))
+        return score(question, item, expand=True)
+    return sorted(menu, key=lambda item: (-rank(item), item["id"]))[0]["id"]
 
 
 def main() -> None:

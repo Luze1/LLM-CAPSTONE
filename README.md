@@ -1,15 +1,12 @@
-# Bike Station Finder
+# Thai Table Menu Assistant
 
-An LLM-powered assistant that answers questions about a small, committed dataset
-of Bangkok bike-share stations. It demonstrates:
+Thai Table is an LLM-powered restaurant menu assistant. It answers questions
+about a committed Thai menu and cites matching menu IDs.
 
-- validated structured output with Pydantic;
-- an agent loop that calls an allow-listed SQLite search tool;
-- a served FastAPI interface;
-- a reproducible retrieval evaluation against a lexical baseline.
-
-The dataset is intentionally local and domain-specific; it is not the course
-reference app's lecture corpus.
+It demonstrates validated structured output (Pydantic), retrieval with a
+lexical baseline and synonym expansion, a bounded agent loop with an
+allow-listed and validated `search_menu` tool, and a FastAPI web interface.
+The evaluation is offline and does not require an API key.
 
 ## Setup
 
@@ -18,7 +15,7 @@ py -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
 Copy-Item .env.example .env
-# Edit .env and add a newly generated key. Never commit .env.
+# Add a newly generated class-proxy key to .env. Never commit .env.
 ```
 
 ## Run
@@ -27,35 +24,27 @@ Copy-Item .env.example .env
 python -m uvicorn app:app --reload
 ```
 
-Then send:
+Open `http://127.0.0.1:8000`, or call:
 
 ```powershell
 curl -X POST http://127.0.0.1:8000/ask `
   -H "Content-Type: application/json" `
-  -d '{"question":"Which station is near Siam and has bikes?"}'
+  -d '{"question":"Find a vegan curry under 200 baht"}'
 ```
 
-The model is called through `from openai import OpenAI` with
-`model="gemma-4-E4B-it"` and the class proxy URL from `OPENAI_BASE_URL`.
-Tool arguments are validated before the SQL tool runs,
-and the final answer is validated before it is returned.
+The app calls `from openai import OpenAI` with model `gemma-4-E4B-it`.
+`OPENAI_API_KEY` and `OPENAI_BASE_URL` are read from the environment.
 
 ## Evaluation
 
-The 30 labelled questions live in `data/eval.json`. Run the offline evaluation:
+The 30 labelled questions in `data/eval.json` compare Recall@1 for a
+name/category-only lexical baseline against the app's expanded retrieval:
 
 ```powershell
 python evaluate.py
+pytest
 ```
 
-It reports Recall@1 for the lexical baseline and the retrieval configuration
-used by the app. The second configuration uses a synonym expansion and a
-minimum lexical score; both numbers are computed from the same labelled set.
-The evaluation does not need an API key, so results are reproducible.
-
-## Limitations
-
-The station data is a static snapshot rather than a live availability feed.
-The agent can only answer questions supported by the committed fields, and
-questions outside that scope should be reported as unsupported rather than
-invented.
+The committed menu data is the corpus; it is not the reference app's lecture
+corpus. The menu is a static sample, so availability and dietary advice should
+be confirmed with restaurant staff.

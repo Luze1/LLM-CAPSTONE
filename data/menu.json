@@ -1,0 +1,12 @@
+[
+  {"id":"M01","name":"Pad Thai Goong","category":"noodles","description":"Rice noodles stir-fried with prawns, egg, tofu, bean sprouts and peanuts","price":180,"spicy":false,"vegetarian":false,"vegan":false,"allergens":["peanuts","shellfish"],"nearby":"classic Bangkok street food"},
+  {"id":"M02","name":"Green Curry Tofu","category":"curry","description":"Coconut green curry with tofu, eggplant, basil and jasmine rice","price":160,"spicy":true,"vegetarian":true,"vegan":true,"allergens":["soy"],"nearby":"plant-based house special"},
+  {"id":"M03","name":"Tom Yum Goong","category":"soup","description":"Hot and sour lemongrass soup with prawns, mushrooms and lime","price":220,"spicy":true,"vegetarian":false,"vegan":false,"allergens":["shellfish"],"nearby":"spicy Thai classic"},
+  {"id":"M04","name":"Massaman Beef Curry","category":"curry","description":"Slow-cooked beef with potatoes, onions, coconut milk and roasted peanuts","price":240,"spicy":false,"vegetarian":false,"vegan":false,"allergens":["peanuts"],"nearby":"mild southern-style curry"},
+  {"id":"M05","name":"Som Tum Thai","category":"salad","description":"Green papaya salad with tomatoes, long beans, lime and peanuts","price":120,"spicy":true,"vegetarian":true,"vegan":true,"allergens":["peanuts"],"nearby":"fresh and crunchy salad"},
+  {"id":"M06","name":"Basil Chicken Rice","category":"rice","description":"Jasmine rice topped with spicy holy basil chicken and a fried egg","price":140,"spicy":true,"vegetarian":false,"vegan":false,"allergens":["egg","soy"],"nearby":"quick lunch favorite"},
+  {"id":"M07","name":"Mango Sticky Rice","category":"dessert","description":"Sweet coconut sticky rice with ripe Nam Dok Mai mango","price":110,"spicy":false,"vegetarian":true,"vegan":true,"allergens":[],"nearby":"seasonal Thai dessert"},
+  {"id":"M08","name":"Tofu Spring Rolls","category":"starter","description":"Crispy vegetable and tofu spring rolls with sweet chili sauce","price":100,"spicy":false,"vegetarian":true,"vegan":true,"allergens":["soy"],"nearby":"shareable starter"},
+  {"id":"M09","name":"Grilled Pork Neck","category":"grill","description":"Charcoal-grilled pork neck with toasted rice and tamarind dipping sauce","price":190,"spicy":true,"vegetarian":false,"vegan":false,"allergens":["fish"],"nearby":"Isan-style grill"},
+  {"id":"M10","name":"Thai Iced Tea","category":"drink","description":"Black tea with condensed milk and evaporated milk over ice","price":70,"spicy":false,"vegetarian":true,"vegan":false,"allergens":["dairy"],"nearby":"refreshing house drink"}
+]
